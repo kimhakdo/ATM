@@ -23,9 +23,22 @@ public class PopupLogin : MonoBehaviour
     }
 
     public void OnClickLogin()
-    { 
-        loginPopup.SetActive(false); //로그인 팝업 비활성화
-        mainPopup.SetActive(true);   //메인 팝업 활성화
+    {
+        string id = iDInput.text; //ID 입력창에 입력된 값
+        string pw = pWInput.text; //PW 입력창에 입력된 값
+
+
+        if (id == "ID" && pw == "PW")
+        {
+            loginPopup.SetActive(false); //로그인 팝업 비활성화
+            mainPopup.SetActive(true);   //메인 팝업 활성화
+        }
+        else
+        {
+            Debug.Log("로그인 실패");
+            return;
+        }
+
     }
 
     public void OnClickSignUp()
@@ -34,18 +47,4 @@ public class PopupLogin : MonoBehaviour
         signUpPopup.SetActive(true); //회원가입 팝업 활성화
     }
 
-    public void OnLogin()
-    {
-        string id = iDInput.text; //ID 입력창에 입력된 값
-        string pw = pWInput.text; //PW 입력창에 입력된 값
-
-        if()
-        {
-            OnClickLogin();
-        }
-        else
-        {
-            Debug.Log("로그인 실패");
-        }
-    }
 }
