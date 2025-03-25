@@ -8,11 +8,13 @@ public class PopupBank : MonoBehaviour
     public GameObject withdrawPopup; //출금
     public GameObject mainPopup;     //메인버튼
     public GameObject needMoneyPopup; //실패버튼
+    public GameObject sendMoneyPopup; //송금버튼
 
     public Button depositBtn;        //입금버튼
     public Button withdrawBtn;       //출금버튼
     public Button[] backBtn;         //뒤로가기버튼
-    
+    public Button sendMoneyBtn;      //송금버튼
+
     public Button needMoneyBtn;      //실패버튼
     public Button okayBtn;           //확인버튼
 
@@ -27,8 +29,10 @@ public class PopupBank : MonoBehaviour
         withdrawBtn.onClick.AddListener(OnClickWithdrawPopup); //출금버튼 클릭시 이벤트
         backBtn[0].onClick.AddListener(BackBtn);               //뒤로가기버튼 클릭시 이벤트
         backBtn[1].onClick.AddListener(BackBtn);               //뒤로가기버튼 클릭시 이벤트
+        backBtn[2].onClick.AddListener(BackBtn);               //뒤로가기버튼 클릭시 이벤트
         needMoneyBtn.onClick.AddListener(NeedMoneyBtn);        //실패버튼 클릭시 이벤트
         okayBtn.onClick.AddListener(OkayBtn);                  //확인버튼 클릭시 이벤트
+        sendMoneyBtn.onClick.AddListener(OnClickSendMoney);    //송금버튼 클릭시 이벤트
 
 
     }
@@ -43,10 +47,17 @@ public class PopupBank : MonoBehaviour
         mainPopup.SetActive(false);     //메인버튼 비활성화
     }
 
+    public void OnClickSendMoney()
+    {
+        sendMoneyPopup.SetActive(true); //송금팝업창 활성화
+        mainPopup.SetActive(false);     //메인버튼 비활성화
+    }
+
     public void BackBtn()
     {
         depositPopup.SetActive(false);  //입금팝업창 비활성화
         withdrawPopup.SetActive(false); //출금팝업창 비활성화
+        sendMoneyPopup.SetActive(false); //송금팝업창 비활성화
         mainPopup.SetActive(true);      //메인버튼 활성화
     }
     public void NeedMoneyBtn()
