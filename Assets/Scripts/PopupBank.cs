@@ -19,6 +19,8 @@ public class PopupBank : MonoBehaviour
     public TMP_InputField inputField;    //입금금액
     public TMP_InputField outputField;   //출금금액
 
+    public DataManager dataManager;
+
     private void Start()
     {
         depositBtn.onClick.AddListener(OnClickDeposit);        //입금버튼 클릭시 이벤트
@@ -62,6 +64,7 @@ public class PopupBank : MonoBehaviour
             GameManager.instance.userData.Cash -= amount;
             GameManager.instance.userData.Balance += amount;
             GameManager.instance.uiManager.Refresh(GameManager.instance.userData);
+            dataManager.SaveData(GameManager.instance.userData);
         }
         else
         {

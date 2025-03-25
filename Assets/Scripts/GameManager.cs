@@ -22,8 +22,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        userData = new UserData("김학도", 100000, 50000);
-        uiManager.Refresh(userData);
-        dataManager.SaveData();
+        if (uiManager != null)
+        {
+            uiManager.Refresh(userData);
+        }
+        else
+        {
+            Debug.LogWarning("UIManager가 할당되지 않았습니다.");
+        }
     }
 }

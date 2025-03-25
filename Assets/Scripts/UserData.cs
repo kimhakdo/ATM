@@ -18,31 +18,3 @@ public class UserData
         Balance = balance;
     }
 }
-
-public class  DataManager : MonoBehaviour
-{
-    public UserData userData;
-
-    public void Awake()
-    {
-        LoadData();
-    }
-
-    public void SaveData()
-    {
-        // Json 직렬화 하기
-        string json = JsonUtility.ToJson(userData);
-        
-        //외부 폴더에 접근해서 json 파일 저장
-        File.WriteAllText(Application.persistentDataPath + "/userData.json", json);
-    }
-
-    public void LoadData()
-    {
-        //외부 폴더에 접근해서 json 파일 읽기
-        string json = File.ReadAllText(Application.persistentDataPath + "/userData.json");
-
-        // Json 역직렬화 하기
-        userData = JsonUtility.FromJson<UserData>(json);
-    }
-}
