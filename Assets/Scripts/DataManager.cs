@@ -51,7 +51,7 @@ public class DataManager : MonoBehaviour
 
     private void SetDefaultUserData()
     {
-        GameManager.instance.userData = new UserData("김학도", 100000, 50000);
+        GameManager.instance.userData = new UserData("김학도", 100000, 50000, "ID", "PW");
         SaveData(GameManager.instance.userData);
     }
 }
