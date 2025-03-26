@@ -21,7 +21,6 @@ public class PopupLogin : MonoBehaviour
     public Button errorBtn;        //에러 버튼
 
     public SignUp signUp;          //회원가입 스크립트
-    //public UserData userInfo;      //사용자 정보
     public DataManager dataManager; //데이터 매니저
     public UIManager uiManager;     //UI 매니저
 

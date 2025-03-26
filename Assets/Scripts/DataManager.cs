@@ -15,11 +15,6 @@ public class DataManager : MonoBehaviour
         Debug.Log("저장 경로: " + Application.persistentDataPath);
     }
 
-    //public void Start()
-    //{
-    //    string userID = "DefaultUser"; // 기본 유저 ID 설정
-    //    LoadData(userID);
-    //}
     public void SaveData(UserData data)
     {
         if (data == null)
@@ -45,20 +40,13 @@ public class DataManager : MonoBehaviour
 
             if (GameManager.instance.userData == null)
             {
-                Debug.LogWarning("JSON 데이터가 잘못되어 기본값을 사용합니다.");
-                //SetDefaultUserData(userID);
+                Debug.LogWarning("JSON 데이터가 잘못되어 기본값을 사용합니다."); 
             }
         }
         else
         {
             Debug.LogWarning($"[{userID}] 저장된 데이터가 없어 기본값을 생성합니다.");
-            //SetDefaultUserData(userID);
         }
     }
 
-    //private void SetDefaultUserData(string userID)
-    //{
-    //    GameManager.instance.userData = new UserData(userID, 100000, 50000, "ID", "PW");
-    //    SaveData(userID, GameManager.instance.userData);
-    //}
 }

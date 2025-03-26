@@ -2415,6 +2415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 333899264}
   - component: {fileID: 333899265}
+  - component: {fileID: 333899266}
   m_Layer: 5
   m_Name: Send
   m_TagString: Untagged
@@ -2472,6 +2473,30 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &333899266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333899263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2aed5ddd5512347b72c4b05f27dcde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataManager: {fileID: 931539456}
+  popupBank: {fileID: 259165243}
+  sendID: {fileID: 1582872121}
+  sendCash: {fileID: 2038494326}
+  errorScreen: {fileID: 2023725041}
+  errorPopup: {fileID: 2037846832}
+  userData:
+    Name: 
+    Cash: 0
+    Balance: 0
+    ID: 
+    PW: 
 --- !u!1 &363391679
 GameObject:
   m_ObjectHideFlags: 0
@@ -7026,7 +7051,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 983401191}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 333899266}
+        m_TargetAssemblyTypeName: Send, Assembly-CSharp
+        m_MethodName: TransferMoney
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &983401191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9657,6 +9694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1274687538}
   - component: {fileID: 1274687539}
+  - component: {fileID: 1274687540}
   m_Layer: 5
   m_Name: SendID
   m_TagString: Untagged
@@ -9711,6 +9749,30 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1274687540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274687537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2aed5ddd5512347b72c4b05f27dcde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataManager: {fileID: 931539456}
+  popupBank: {fileID: 0}
+  sendID: {fileID: 1582872121}
+  sendCash: {fileID: 2038494326}
+  errorScreen: {fileID: 0}
+  errorPopup: {fileID: 0}
+  userData:
+    Name: 
+    Cash: 0
+    Balance: 0
+    ID: 
+    PW: 
 --- !u!1 &1279692158
 GameObject:
   m_ObjectHideFlags: 0
@@ -12860,14 +12922,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 2
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 4
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 2
+  m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 30
   m_CharacterLimit: 0
