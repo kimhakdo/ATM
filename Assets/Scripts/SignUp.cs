@@ -21,6 +21,8 @@ public class SignUp : MonoBehaviour
 
     public PopupLogin popupLogin;
 
+    public DataManager dataManager;
+
 
     public string filePath;
 
@@ -80,10 +82,7 @@ public class SignUp : MonoBehaviour
         newUser.Balance = 50000;
 
         // 모든 조건이 만족되면 회원가입 성공
-        string json = JsonUtility.ToJson(newUser);
-        Debug.Log("회원가입 성공! 사용자 정보 JSON: " + json);
-
-        SaveUserData(json);
+        dataManager.SaveData(newUser);
 
     }
 
@@ -94,17 +93,5 @@ public class SignUp : MonoBehaviour
         login.SetActive(true);
     }
 
-    private void SaveUserData(string json)
-    {
-        try
-        {
-            // JSON 데이터를 파일에 저장
-            File.WriteAllText(filePath, json);
-            Debug.Log("회원가입 정보가 파일에 저장되었습니다: " + filePath);
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError("회원가입 정보 저장 실패: " + e.Message);
-        }
-    }
+
 }

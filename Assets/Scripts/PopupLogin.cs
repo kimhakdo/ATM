@@ -23,6 +23,7 @@ public class PopupLogin : MonoBehaviour
     public SignUp signUp;          //회원가입 스크립트
     //public UserData userInfo;      //사용자 정보
     public DataManager dataManager; //데이터 매니저
+    public UIManager uiManager;     //UI 매니저
 
     private void Start()
     {
@@ -48,7 +49,7 @@ public class PopupLogin : MonoBehaviour
         }
 
         // 저장된 사용자 정보 로드
-        dataManager.LoadData();
+        dataManager.LoadData(inputId);
 
         if (GameManager.instance.userData != null && GameManager.instance.userData.ID == inputId && GameManager.instance.userData.PW == inputPw)
         {
@@ -56,6 +57,7 @@ public class PopupLogin : MonoBehaviour
 
             loginPopup.SetActive(false); // 로그인 팝업 비활성화
             mainPopup.SetActive(true);   // 메인 팝업 활성화
+            uiManager.Refresh(GameManager.instance.userData); //UI 매니저에 사용자 정보 갱신
         }
         else
         {

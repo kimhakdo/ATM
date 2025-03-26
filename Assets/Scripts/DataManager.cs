@@ -5,18 +5,21 @@ using System.IO;
 
 public class DataManager : MonoBehaviour
 {
-    private string filePath;
+    private string GetFilePath(string userID)
+    {
+        return Application.persistentDataPath + "/" + userID + ".json";
+    }
 
     private void Awake()
     {
-        filePath = Application.persistentDataPath + "/userData.json";
-        Debug.Log("저장 경로: " + filePath);
+        Debug.Log("저장 경로: " + Application.persistentDataPath);
     }
 
-    public void Start()
-    {
-        LoadData();
-    }
+    //public void Start()
+    //{
+    //    string userID = "DefaultUser"; // 기본 유저 ID 설정
+    //    LoadData(userID);
+    //}
     public void SaveData(UserData data)
     {
         if (data == null)
@@ -25,33 +28,37 @@ public class DataManager : MonoBehaviour
             return;
         }
 
-        string json = JsonUtility.ToJson(data);
+        string filePath = GetFilePath(data.ID);
+        string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(filePath, json);
+        Debug.Log($"데이터 저장 완료: {filePath}");
     }
 
-    public void LoadData()
+    public void LoadData(string userID)
     {
+        string filePath = GetFilePath(userID);
+
         if (File.Exists(filePath))
         {
             string json = File.ReadAllText(filePath);
             GameManager.instance.userData = JsonUtility.FromJson<UserData>(json);
 
-            if (GameManager.instance.userData == null) // JSON이 잘못 저장된 경우
+            if (GameManager.instance.userData == null)
             {
                 Debug.LogWarning("JSON 데이터가 잘못되어 기본값을 사용합니다.");
-                SetDefaultUserData();
+                //SetDefaultUserData(userID);
             }
         }
         else
         {
-            Debug.LogWarning("저장된 데이터가 없어 기본값을 생성합니다.");
-            SetDefaultUserData();
+            Debug.LogWarning($"[{userID}] 저장된 데이터가 없어 기본값을 생성합니다.");
+            //SetDefaultUserData(userID);
         }
     }
 
-    private void SetDefaultUserData()
-    {
-        GameManager.instance.userData = new UserData("누군가", 100000, 50000, "ID", "PW");
-        SaveData(GameManager.instance.userData);
-    }
+    //private void SetDefaultUserData(string userID)
+    //{
+    //    GameManager.instance.userData = new UserData(userID, 100000, 50000, "ID", "PW");
+    //    SaveData(userID, GameManager.instance.userData);
+    //}
 }
